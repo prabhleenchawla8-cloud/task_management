@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Productivity Reframer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Productivity Reframer</h1>
+  <p style="text-align:center; color:gray;">Context-Aware Productivity Tracker</p>
+
+  <!-- Navigation Buttons -->
+  <div class="menu">
+    <button onclick="showSection('log')">1. Log a Day</button>
+    <button onclick="showSection('view')">2. View All Logs</button>
+    <button onclick="showSection('schedule')">3. Smart Schedule</button>
+    <button onclick="showSection('knapsack')">4. Optimal Tasks</button>
+    <button onclick="showSection('insights')">5. Insights</button>
+    <button onclick="saveToFile()">6. Save to File</button>
+  </div>
+
+  <hr />
+
+  <!-- Section 1: Log a Day -->
+  <div id="section-log" class="section">
+    <h2>Log a New Day</h2>
+
+    <label>Date (DD-MM-YYYY):</label><br/>
+    <input type="text" id="log-date" placeholder="e.g. 25-04-2026" /><br/><br/>
+
+    <label>Number of Tasks (1-10):</label><br/>
+    <input type="number" id="task-count" min="1" max="10" value="1" /><br/><br/>
+
+    <button onclick="generateTaskForms()">Set Tasks</button>
+
+    <div id="task-forms"></div>
+
+    <br/>
+    <button onclick="submitLog()">Submit Day Log</button>
+    <p id="log-msg" class="msg"></p>
+  </div>
+
+  <!-- Section 2: View All Logs -->
+  <div id="section-view" class="section" style="display:none;">
+    <h2>All Logged Days</h2>
+    <button onclick="renderLogs()">Refresh</button>
+    <div id="logs-output"></div>
+  </div>
+
+  <!-- Section 3: Smart Schedule -->
+  <div id="section-schedule" class="section" style="display:none;">
+    <h2>Generate Smart Schedule</h2>
+    <label>Enter Date (DD-MM-YYYY):</label><br/>
+    <input type="text" id="sched-date" placeholder="e.g. 25-04-2026" /><br/><br/>
+    <button onclick="generateSchedule()">Generate</button>
+    <div id="sched-output"></div>
+  </div>
+
+  <!-- Section 4: Optimal Tasks (Knapsack) -->
+  <div id="section-knapsack" class="section" style="display:none;">
+    <h2>Select Optimal Tasks</h2>
+    <label>Enter Date (DD-MM-YYYY):</label><br/>
+    <input type="text" id="knap-date" placeholder="e.g. 25-04-2026" /><br/><br/>
+    <label>Available Minutes Today (1-480):</label><br/>
+    <input type="number" id="knap-minutes" min="1" max="480" value="120" /><br/><br/>
+    <button onclick="runKnapsack()">Find Optimal Tasks</button>
+    <div id="knap-output"></div>
+  </div>
+
+  <!-- Section 5: Insights -->
+  <div id="section-insights" class="section" style="display:none;">
+    <h2>Productivity Insights</h2>
+    <label>Enter Date (DD-MM-YYYY):</label><br/>
+    <input type="text" id="ins-date" placeholder="e.g. 25-04-2026" /><br/><br/>
+    <button onclick="generateInsights()">Get Insights</button>
+    <div id="ins-output"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
